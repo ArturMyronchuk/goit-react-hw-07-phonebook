@@ -3,14 +3,20 @@ import { Li, Button, Span } from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
-export const ContactItem = ({ contact: { id, name, phone } }) => {
+export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
 
   return (
     <Li>
-      <Span>{name}</Span>
-      <Span> {phone}</Span>
-      <Button onClick={() => dispatch(deleteContact(id))}>Delete</Button>
+      <Span>
+        {contact.name}: {contact.phone}
+      </Span>
+      <Button
+        className="delete"
+        onClick={() => dispatch(deleteContact(contact.id))}
+      >
+        Delete
+      </Button>
     </Li>
   );
 };

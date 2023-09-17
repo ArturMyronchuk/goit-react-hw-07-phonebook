@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { getIsLoading, getError } from 'redux/selectors';
+
 export const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
@@ -18,12 +19,16 @@ export const App = () => {
 
   return (
     <Div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      {isLoading ? <Loader /> : error}
-      <ContactList />
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm />
+      </div>
+      {isLoading && !error && <b>Request in progress...</b>}
+      <div className="second-wrap">
+        <h2>Contacts</h2>
+        <Filter />
+        <ContactList />
+      </div>
     </Div>
   );
 };
