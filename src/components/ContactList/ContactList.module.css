@@ -14,4 +14,7 @@
   height: 30px;
   padding: 8px;
   text-align: center;
+  background-color: blue;
+  color: aliceblue;
+  border-radius: 30px;
 }
